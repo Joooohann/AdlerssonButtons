@@ -1,0 +1,164 @@
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #008B8B; /* Dunkeltürkis für Adlersson-Vibe */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 3rem;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    padding-bottom: 80px; /* Platz für den fixierten AutoPlay-Button */
+}
+
+.sound-card {
+    background: #2d2d2d;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    border: 2px solid transparent;
+}
+
+.sound-card:hover {
+    background: #3d3d3d;
+    transform: translateY(-5px);
+    border-color: #008B8B;
+}
+
+.sound-card.playing {
+    border-color: #008B8B;
+    box-shadow: 0 0 15px rgba(0, 139, 139, 0.5);
+    background: #3d3d3d;
+}
+
+.btn {
+    background: #008B8B;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sound-card.disabled .btn {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.sound-card.disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+.sound-card.disabled:hover {
+    transform: none;
+    background: #2d2d2d;
+    border-color: transparent;
+}
+
+.sound-card span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* AutoPlay Switch Styles */
+.autoplay-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(45, 45, 45, 0.9);
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    border: 1px solid #444;
+}
+
+.autoplay-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #008B8B;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #008B8B;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
