@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const onclickAttr = card.getAttribute('onclick');
         if (onclickAttr && onclickAttr.includes("'test.mp3'")) {
             // Exception for the very last card
-            if (index !== lastIndex) {
+            if (index !== lastIndex+1) {
                 card.classList.add('disabled');
                 card.removeAttribute('onclick');
             }
